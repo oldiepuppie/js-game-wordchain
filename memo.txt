@@ -1,0 +1,20 @@
+&& answer.charAt(2)
+
+2020 08 27
+끝말 경고, 중복 경고 작성
+함수 조합
+
+
+warnKoreanLang(answer)
+warnWordLength(answer)
+warnMatchEnds()
+warnOverlap ()
+function warnWordsFull()
+
+let typingbox = document.getElementById("typingbox");
+typingbox.value;
+
+let listOfBalls = document.getElementById('ul');
+    while (listOfBalls.hasChildNodes()) {
+        listOfBalls.removeChild(listOfBalls.firstChild);
+    }
