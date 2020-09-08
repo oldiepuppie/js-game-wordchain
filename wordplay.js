@@ -11,7 +11,7 @@ removeBtn.addEventListener("click", removeWords);
 function insert() {
     let boxWithoutWord = document.createElement("p");
     let wordForBox = document.createTextNode(typingBox.value);
-    
+
     boxWithoutWord.appendChild(wordForBox);
     wordListBox.appendChild(boxWithoutWord);
     typingBox.focus();
@@ -19,7 +19,7 @@ function insert() {
 }
 
 //지우기
-function removeWords() {    
+function removeWords() {
     while (wordListBox.hasChildNodes()) {
         wordListBox.removeChild(wordListBox.firstChild);
     }
@@ -27,13 +27,13 @@ function removeWords() {
 
 
 //입력버튼용
-// function addEntryOrAlert() {
-//     warnKoreanLang();
-//     warnWordLength();
-//     warnMatchEnds();
-//     warnOverlap();
-//     warnTenWordsFull();
-// }
+function addEntryOrAlert() {
+    warnKoreanLang();
+    warnWordLength();
+    warnMatchEnds();
+    warnOverlap();
+    warnTenWordsFull();
+}
 
 
 //한국어경고
@@ -70,8 +70,8 @@ function warnMatchEnds() {
     } else {
         let lastSingleBox = wordBoxArray[wordBoxArray.length - 1];
         let contentOfSingleBox = lastSingleBox.innerText;
-        if (contentOfSingleBox.charAt(2) == typingBox.value.charAt(0) ) {
-           insert();
+        if (contentOfSingleBox.charAt(2) == typingBox.value.charAt(0)) {
+            insert();
         } else {
             alert("앞 단어의 마지막 소리로 시작하는 단어를 입력합니다.");
         }
@@ -80,21 +80,21 @@ function warnMatchEnds() {
 
 
 // 단어 중복 경고
-function warnOverlap () {
+function warnOverlap() {
     let boxArray = wordListBox.getElementsByTagName("p");
     let j = boxArray.length;
 
-    if ( j >= 1 ) {
+    if (j >= 1) {
         let tempArray = [];
-        for (let i=0; i<j; i++) {
+        for (let i = 0; i < j; i++) {
             tempArray.push(boxArray[i].innerText);
         }
         let overlapTest;
-        if ( tempArray.includes(typingBox.value) ) {
+        if (tempArray.includes(typingBox.value)) {
             overlapTest = true;
         }
 
-        if ( !overlapTest ){
+        if (!overlapTest) {
             insert();
         } else {
             alert("이미 입력된 단어입니다.");
@@ -110,7 +110,7 @@ function warnOverlap () {
 function warnTenWordsFull() {
     let smallBoxOfWord = wordListBox.getElementsByTagName("p");
 
-    if (smallBoxOfWord.length>= 10) {
+    if (smallBoxOfWord.length >= 10) {
         confirm("단어를 모두 지웁니다.");
 
         if (confirm("단어를 모두 지웁니다.")) {
