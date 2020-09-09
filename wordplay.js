@@ -28,11 +28,27 @@ function removeWords() {
 
 //입력버튼용
 function addEntryOrAlert() {
-    warnKoreanLang();
-    warnWordLength();
-    warnMatchEnds();
-    warnOverlap();
-    warnTenWordsFull();
+    const korean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+    let answerLangTest = korean.test(typingBox.value);
+    if (answerLangTest) {
+        insert();
+    }
+
+    if (typingBox.value.length == 3) {
+        insert();
+    }
+
+    let wordBoxArray = wordListBox.getElementsByTagName("p");
+    if (wordBoxArray.length <= 0) {
+        insert();
+    }
+
+
+    // warnKoreanLang();
+    // warnWordLength();
+    // warnMatchEnds();
+    // warnOverlap();
+    // warnTenWordsFull();
 }
 
 
@@ -82,9 +98,8 @@ function warnMatchEnds() {
 // 단어 중복 경고
 function warnOverlap() {
     let boxArray = wordListBox.getElementsByTagName("p");
-    let j = boxArray.length;
 
-    if (j >= 1) {
+    if (boxArray.length >= 1) {
         let tempArray = [];
         for (let i = 0; i < j; i++) {
             tempArray.push(boxArray[i].innerText);
